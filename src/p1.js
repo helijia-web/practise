@@ -42,6 +42,7 @@ export function minus(a, b) {
  *
  * @param {Array} origin   - 原tags
  * @param {Array} current  - 目前tags
+ * @return {Array}         - 操作数据结构，请参考测试代码
  */
 export function modifyTags(origin, current) {
   // 请修改成正常的函数
