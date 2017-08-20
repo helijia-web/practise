@@ -6,8 +6,7 @@
  * @return {Array}   - 并集
  */
 export function union(a, b) {
-  // 使用数组方法完成
-  return [1, 2, 3, 4, 5, 7];
+  return a.concat(b.filter(k => a.indexOf(k) === -1));
 }
 
 
@@ -19,8 +18,7 @@ export function union(a, b) {
  * @return {Array}    - 交集
  */
 export function intersect(a, b) {
-  // 要求同上
-  return [2, 3];
+  return a.filter(k => b.indexOf(k) !== -1);
 }
 
 
@@ -32,8 +30,7 @@ export function intersect(a, b) {
  * @return {Array}    - 差集
  */
 export function minus(a, b) {
-  // 要求同上
-  return [1, 4, 5];
+  return a.filter(k => b.indexOf(k) === -1);
 }
 
 
@@ -45,11 +42,6 @@ export function minus(a, b) {
  * @return {Array}         - 操作数据结构，请参考测试代码
  */
 export function modifyTags(origin, current) {
-  // 请修改成正常的函数
-  return [
-    { value: 'js', op: 'add' },
-    { value: 'css', op: 'add' },
-    { value: 'webpack', op: 'remove' },
-    { value: 'vue', op: 'remove'}
-  ]
+  return minus(current, origin).map(value => ({ value, op: 'add' }))
+      .concat(minus(origin, current).map(value => ({ value, op: 'remove' })));
 }
